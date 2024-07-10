@@ -1,39 +1,53 @@
+<?php
+require_once '../../app.php';
+if (isset($_SESSION[APP_NAME]['menu'])) {
+    unset($_SESSION[APP_NAME]['menu']);
+}
+$menu = new menu();
+$menu->get();
+
+$category = new Category();
+$categories = $category->pluck();
+?>
+
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>メニュー管理</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-</head>
+<?php include('../../components/admin_head.php') ?>
 
-<body class="bg-gray-100 p-6">
-    <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow">
-        <h1 class="text-2xl font-bold mb-6">メニュー管理</h1>
-        <a href="./input.php" class="text-blue-500 hover:underline">New</a>
-        <table class="table">
-            <thead>
-                <tr class="w-full bg-gray-200 text-gray-700">
-                    <th></th>
-                    <th>Name</th>
-                    <th>Category</th>
-                    <th>朝・昼・夕</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="">
-                    <td class="py-3 px-4 border-b border-gray-200">
-                        <a href="edit.php">編集</a>
-                    </td>
-                    <td class="py-3 px-4 border-b border-gray-200">シーフードパスタ</td>
-                    <td class="py-3 px-4 border-b border-gray-200">フード</td>
-                    <td class="py-3 px-4 border-b border-gray-200">昼食、夕食</td>
-                </tr>
-            </tbody>
-        </table>
+<body class="bg-gray-100">
+    <?php include('../../components/admin_nav.php') ?>
 
-    </div>
+    <main class="container mx-auto px-4 py-8">
+        <h1 class="text-2xl font-bold mb-4">Admin menu</h1>
+        <div class="mt-3 mb-3">
+            <a href="admin/menu/input.php" class="bg-blue-500 text-white py-2 px-4 rounded">New</a>
+        </div>
+        <div class="overflow-x-auto">
+            <table class="min-w-full bg-white shadow-md rounded">
+                <thead>
+                    <tr class="bg-gray-800 text-white">
+                        <th class="py-2 px-4 text-left">Action</th>
+                        <th class="py-2 px-4 text-left">Name</th>
+                        <th class="py-2 px-4 text-left">Category</th>
+                        <th class="py-2 px-4 text-left">Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if ($menu->values): ?>
+                    <?php foreach($menu->values as $value): ?>
+                    <tr class="border-b">
+                        <td class="py-2 px-4"><a href="admin/menu/edit.php?id=<?= $value['id'] ?>" class="text-blue-500 hover:underline">Edit</a></td>
+                        <td class="py-2 px-4"><?= $value['name'] ?></td>
+                        <td class="py-2 px-4"><?= $categories[$value['category_id']] ?></td>
+                        <td class="py-2 px-4">&yen;<?= number_format($value['price']) ?></td>
+                    </tr>
+                    <?php endforeach ?>
+                    <?php endif ?>
+                </tbody>
+            </table>
+        </div>
+    </main>
 </body>
 
 </html>
