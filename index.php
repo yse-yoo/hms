@@ -21,7 +21,6 @@ $menu->get();
     </section>
 
     <section>
-      <h3 class="text-2xl font-bold text-gray-800 mb-6">メニュー一覧</h3>
       <div id="menu" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <?php if ($menu->values) : ?>
           <?php foreach ($menu->values as $value) : ?>

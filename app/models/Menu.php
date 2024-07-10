@@ -33,12 +33,14 @@ class Menu extends DB
         $sql = "INSERT INTO {$this->table_name}
                     (
                     name, category_id, price,
-                    stock, summary, description, image_name
+                    stock, summary, description, image_name,
+                    is_room_service, calorie
                     )
                 VALUES
                     (
                     :name, :category_id, :price,
-                    :stock, :summary, :description, :image_name
+                    :stock, :summary, :description, :image_name,
+                    :is_room_service, :calorie
                     );
                ";
         $stmt = $this->pdo->prepare($sql);
@@ -55,7 +57,6 @@ class Menu extends DB
             $posts['image_name'] = $image_name;
         }
 
-        var_dump($posts);
         $sql = "UPDATE {$this->table_name} SET
                     name = :name, 
                     category_id = :category_id, 
