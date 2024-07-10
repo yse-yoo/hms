@@ -61,7 +61,7 @@ $categories = $category->pluck();
                 <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                     Order
                 </button>
-                <a href="./menu.php" class="border border-blue-700 text-blue-500 py-2 px-4 rounded hover:underline">Back</a>
+                <a href="./" class="border border-blue-700 text-blue-500 py-2 px-4 rounded hover:underline">Back</a>
             </div>
         </div>
     </div>
