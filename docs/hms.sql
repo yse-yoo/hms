@@ -1,0 +1,29 @@
+-- カテゴリーテーブル
+CREATE TABLE categories (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY COMMENT 'ID',
+    name VARCHAR(255) NOT NULL COMMENT '名称',
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '作成日',
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新日'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- メニューテーブル
+CREATE TABLE menus (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY COMMENT 'ID',
+    name VARCHAR(255) NOT NULL COMMENT '名称',
+    category_id BIGINT UNSIGNED NOT NULL COMMENT 'カテゴリID',
+    price INT NOT NULL COMMENT '価格',
+    stock INT NOT NULL COMMENT '在庫',
+    summary TEXT COMMENT 'サマリー',
+    description TEXT COMMENT '説明',
+    image_name TEXT COMMENT '画像名',
+    is_room_service TINYINT(1) NOT NULL DEFAULT 0 COMMENT 'ルームサービスフラグ',
+    calories INT COMMENT 'カロリー',
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '作成日',
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新日',
+    
+    -- 外部キー制約
+    CONSTRAINT fk_menus_category_id
+        FOREIGN KEY (category_id)
+        REFERENCES categories(id)
+        ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

@@ -38,10 +38,10 @@ $categories = $category->pluck();
                 <?= nl2br($menu->value['description'])  ?>
             </p>
 
-            <?php if ($menu->value['calorie'] > 0) : ?>
+            <?php if ($menu->value['calories'] > 0) : ?>
                 <p class="mb-6 text-left">
                     <strong>カロリー:</strong>
-                    <?= $menu->value['calorie'] ?>kcal
+                    <?= $menu->value['calories'] ?>kcal
                 </p>
             <?php endif ?>
             <p class="mb-6 text-left">

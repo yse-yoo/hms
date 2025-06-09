@@ -34,13 +34,13 @@ class Menu extends DB
                     (
                     name, category_id, price,
                     stock, summary, description, image_name,
-                    is_room_service, calorie
+                    is_room_service, calories
                     )
                 VALUES
                     (
                     :name, :category_id, :price,
                     :stock, :summary, :description, :image_name,
-                    :is_room_service, :calorie
+                    :is_room_service, :calories
                     );
                ";
         $stmt = $this->pdo->prepare($sql);
@@ -64,7 +64,7 @@ class Menu extends DB
                     stock = :stock, 
                     summary = :summary, 
                     description = :description,
-                    calorie = :calorie,
+                    calories = :calories,
                     is_room_service = :is_room_service,
                     image_name = :image_name
                 WHERE id = :id;";

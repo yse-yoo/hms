@@ -1,10 +1,10 @@
 
-const MENU_IMAGE_BASE_URL = 'http://localhost/hms/'
+const MENU_IMAGE_BASE_URL = './'
 const MENUS_IMAGE_BASE_URL = 'images/menus/';
 
 const renderMenus = (target) => {
     //TODO:
-    const jsonDataUrl = 'http://localhost/hms/api/menu/get.php';
+    const jsonDataUrl = './api/menu/get.php';
 
     const menuContainer = document.getElementById(target);
 
@@ -30,7 +30,7 @@ const renderMenus = (target) => {
 }
 
 const renderMenusByCategory = (target) => {
-    const jsonDataUrl = 'http://localhost/hms/api/menu/by_category.php';
+    const jsonDataUrl = './api/menu/by_category.php';
 
     const menuSection = document.getElementById(target);
 

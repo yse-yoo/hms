@@ -43,7 +43,7 @@ $category->get();
             </div>
             <div class="mb-4">
                 <label class="block text-gray-700">Calorie</label>
-                <input type="number" name="calorie" value="<?= @$menu['calorie'] ?>" class="mt-1 block p-2 w-full border rounded" required>
+                <input type="number" name="calories" value="<?= @$menu['calories'] ?>" class="mt-1 block p-2 w-full border rounded" required>
             </div>
             <label class="block text-gray-700 mb-2">Room Service</label>
             <div class="flex items-center space-x-4">
