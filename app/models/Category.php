@@ -38,4 +38,20 @@ class Category extends DB
         $this->values = $stmt->fetchAll();
         return $this->values;
     }
+
+    public function insert($posts)
+    {
+        $sql = "INSERT INTO {$this->table_name} (name) VALUES (:name);";
+        $stmt = $this->pdo->prepare($sql);
+        $result = $stmt->execute($posts);
+        return $result;
+    }
+
+    public function update($posts)
+    {
+        $sql = "UPDATE {$this->table_name} SET name = :name WHERE id = :id;";
+        $stmt = $this->pdo->prepare($sql);
+        $result = $stmt->execute($posts);
+        return $result;
+    }
 }
